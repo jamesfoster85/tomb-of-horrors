@@ -33,6 +33,9 @@ gem 'simple_form'
 # Responsive front-end framework
 gem 'foundation-rails'
 
+# Rails plugin to conveniently handle multiple models in a single form.
+gem "nested_form"
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

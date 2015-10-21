@@ -1,13 +1,16 @@
 <div class="row">
 	<div class="small-10 small-offset-1 columns">
 		<h1>Add a new monster...</h1>
-		<%= simple_form_for @monster do |f| %>
+		<%= simple_nested_form_for @monster do |f| %>
 			<%= f.input :name %>
 			<%= f.input :size %>
 			<%= f.input :nature, :label => 'Type' %>
+
 			<%= f.simple_fields_for :monster_tags do |monster_tag| %>
-				<%= monster_tag.input :tag %>
+			  <%= monster_tag.input :tag %>
+			  <%= monster_tag.link_to_remove "Remove this tag" %>
 			<% end %>
+			<p><%= f.link_to_add "Add a tag", :monster_tags %></p>
 			<%= f.submit 'Create' %>
 		<% end %>
 	</div>

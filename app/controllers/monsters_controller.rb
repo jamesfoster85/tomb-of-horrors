@@ -5,7 +5,6 @@ class MonstersController < ApplicationController
 
 	def new
 		@monster = Monster.new
-		2.times { @monster.monster_tags.build}
 	end
 
 	def create
@@ -23,6 +22,6 @@ class MonstersController < ApplicationController
 	private
 
 	def monster_params
-		params.require(:monster).permit(:name, :size, :nature, monster_tags_attributes: [:id, :tag])
+		params.require(:monster).permit(:name, :size, :nature, monster_tags_attributes: [:id, :tag, :_destroy])
 	end
 end
