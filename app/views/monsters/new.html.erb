@@ -5,6 +5,9 @@
 			<%= f.input :name %>
 			<%= f.input :size %>
 			<%= f.input :nature, :label => 'Type' %>
+			<%= f.simple_fields_for :monster_tags do |monster_tag| %>
+				<%= monster_tag.input :tag %>
+			<% end %>
 			<%= f.submit 'Create' %>
 		<% end %>
 	</div>
