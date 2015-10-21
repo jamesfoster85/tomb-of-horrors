@@ -1,7 +1,11 @@
-<h1>Add a new monster...</h1>
-<%= simple_form_for @monster do |f| %>
-	<%= f.input :name %>
-	<%= f.input :size %>
-	<%= f.input :nature, :label => 'Type' %>
-	<%= f.submit 'Create' %>
-<% end %>
+<div class="row">
+	<div class="small-10 small-offset-1 columns">
+		<h1>Add a new monster...</h1>
+		<%= simple_form_for @monster do |f| %>
+			<%= f.input :name %>
+			<%= f.input :size %>
+			<%= f.input :nature, :label => 'Type' %>
+			<%= f.submit 'Create' %>
+		<% end %>
+	</div>
+</div>
