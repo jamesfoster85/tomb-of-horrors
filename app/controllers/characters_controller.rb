@@ -1,4 +1,4 @@
-class EncountersController < ApplicationController
+class CharactersController < ApplicationController
 	def index
 	end
 

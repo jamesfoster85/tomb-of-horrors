@@ -11,10 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151021165249) do
+ActiveRecord::Schema.define(version: 20151022180552) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "characters", force: true do |t|
+    t.integer  "level"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+  end
+
+  create_table "characters_encounters", id: false, force: true do |t|
+    t.integer "character_id"
+    t.integer "encounter_id"
+  end
+
+  add_index "characters_encounters", ["character_id"], name: "index_characters_encounters_on_character_id", using: :btree
+  add_index "characters_encounters", ["encounter_id"], name: "index_characters_encounters_on_encounter_id", using: :btree
+
+  create_table "encounters", force: true do |t|
+    t.integer  "difficulty"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "monster_tags", force: true do |t|
     t.string   "tag"
