@@ -1,10 +1,38 @@
 <div class="row">
 	<div class="small-10 small-offset-1 columns">		
 		<h1><%= @monster.name %></h1>
-		<h2><%= @monster.size %></h2>
-		<h3><%= @monster.nature %></h3>
-		<% unless @monster.monster_tags.empty? %>
-			<h4>(<%= @monster.monster_tags.map{|m| m.tag}.join(", ") %>)</h4>
-		<% end %>
+		<h6>
+			<%= @monster.size %>
+			<%= @monster.nature %>
+			<% unless @monster.monster_tags.empty? %>
+				(<%= @monster.monster_tags.map{|m| m.tag}.join(", ") %>)
+			<% end %>
+		</h6>
+		<hr class="style-one" />
+		<h5>Armor Class</h5>
+		<h5>Hit Points</h5>
+		<h5>Speed</h5>
+		<hr class="style-one" />
+		<table>
+			<tr>
+				<td>STR</td><td>DEX</td><td>CON</td><td>INT</td><td>WIS</td><td>CHA</td>
+			</tr>
+			<tr>
+					<td></td>		<td></td>		<td></td>		<td></td>		<td></td>		<td></td>
+			</tr>
+		</table>
+		<hr class="style-one" />
+		<h5>Skills</h5>
+		<h5>Senses</h5>
+		<h5>Languages</h5>
+		<h5>Challenge</h5>
+		<hr class="style-one" />
+		<h6>[Traits]</h6>
+		<h4>Actions</h4>
+		<hr />
+		<h6>[Actions]</h6>
+		<h4>Reactions</h4>
+		<hr />
+		<h6>[Reactions]</h6>
 	</div>
 </div>

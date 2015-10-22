@@ -11,3 +11,13 @@
     }
   }
 }
+
+.clr {
+  clear: both;
+}
+
+hr.style-one {
+  border: 0;
+  height: 3px;
+  background-image: linear-gradient(to right, #920d11, #fff);
+}
