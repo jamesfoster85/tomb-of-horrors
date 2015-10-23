@@ -1,5 +1,11 @@
 <div class="row">
 	<div class="small-10 small-offset-1 columns">
-		<h1>Add New Encounter...</h1>
+		<h1>Add a new encounter...</h1>
+		<%= simple_nested_form_for @encounter do |f| %>
+			<%= f.input :difficulty, :collection => Encounter::DIFFICULTIES %>
+			<%= f.select :characters, @characters %>
+			<br class="clr" />
+			<%= f.submit 'Create' %>
+		<% end %>
 	</div>
 </div>

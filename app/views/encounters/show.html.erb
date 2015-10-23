@@ -1,0 +1,11 @@
+<div class="row">
+	<div class="small-10 small-offset-1 columns">
+		<h1><%= @encounter.id %></h1>
+		<h3>Characters:</h3>
+		<% @encounter.characters.each do |character| %>
+			<h4>
+				<%= character.name %>, <%= character.level %>
+			</h4>
+		<% end %>
+	</div>
+</div>

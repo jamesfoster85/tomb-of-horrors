@@ -2,5 +2,12 @@
 	<div class="small-10 small-offset-1 columns">
 		<h1>Encounters</h1>
 		<%= link_to 'Add new...', new_encounter_path %>
+		<br />
+		<br />
+		<% @encounters.each do |encounter| %>
+		<p>
+		<%= link_to encounter.id, encounter_path(encounter) %>
+		</p>
+		<% end %>
 	</div>
 </div>
