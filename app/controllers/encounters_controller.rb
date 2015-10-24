@@ -4,8 +4,8 @@ class EncountersController < ApplicationController
 	end
 
 	def new
-		@characters = Character.all.map{|c| c.name}
 		@encounter = Encounter.new
+		@encounter.characters.build
 	end
 
 	def create
@@ -23,6 +23,6 @@ class EncountersController < ApplicationController
 	private
 
 	def encounter_params
-		params.require(:encounter).permit(:difficulty, :characters)
+		params.require(:encounter).permit(:difficulty, {:character_ids => []})
 	end	
 end

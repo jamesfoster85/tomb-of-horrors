@@ -1,9 +1,9 @@
 <div class="row">
 	<div class="small-10 small-offset-1 columns">
 		<h1>Add a new encounter...</h1>
-		<%= simple_nested_form_for @encounter do |f| %>
+		<%= simple_form_for @encounter do |f| %>
 			<%= f.input :difficulty, :collection => Encounter::DIFFICULTIES %>
-			<%= f.select :characters, @characters %>
+			<%= f.collection_select(:character_ids, Character.all, :id, :name, {:selected => @encounter.characters.map(&:id)}, {:multiple => true}) %>
 			<br class="clr" />
 			<%= f.submit 'Create' %>
 		<% end %>
