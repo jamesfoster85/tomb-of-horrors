@@ -2,5 +2,6 @@
 	<div class="small-10 small-offset-1 columns">
 		<h1><%= @character.name %></h1>
 		<h4>Level: <%= @character.level %></h4>
+		<%= link_to 'Destroy', character_path(@character), :method => :delete, :data => {:confirm => 'Are you sure you want to delete this?'} %>
 	</div>
 </div>
