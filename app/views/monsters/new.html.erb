@@ -10,6 +10,7 @@
 			  <%= monster_tag.link_to_remove "Remove this Tag" %>
 			<% end %>
 			<%= f.link_to_add "Add a Tag", :monster_tags %>
+			<%= f.input :xp, :collection => Monster::XPS %>
 			<br class="clr" />
 			<%= f.submit 'Create' %>
 		<% end %>

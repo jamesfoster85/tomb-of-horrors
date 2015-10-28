@@ -1,6 +1,6 @@
 class MonstersController < ApplicationController
 	def index
-		@monsters = Monster.all
+		@monsters = Monster.order(:name)
 	end
 
 	def new
@@ -28,6 +28,6 @@ class MonstersController < ApplicationController
 	private
 
 	def monster_params
-		params.require(:monster).permit(:name, :size, :nature, monster_tags_attributes: [:id, :tag, :_destroy])
+		params.require(:monster).permit(:name, :size, :nature, :xp, monster_tags_attributes: [:id, :tag, :_destroy])
 	end
 end
