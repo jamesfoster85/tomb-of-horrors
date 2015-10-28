@@ -8,7 +8,7 @@
 			</h4>
 		<% end %>
 		<h6><%= @encounter.difficulty %></h6>
-		<h6><%= sample_encounter(@characters, @difficulty).inspect %></h6>
+		<h6><%= format_encounter(sample_encounter(@characters, @difficulty)).inspect %></h6>
 		<%= link_to 'Destroy', encounter_path(@encounter), :method => :delete, :data => {:confirm => 'Are you sure you want to delete this?'}, :class => "button tiny alert" %>
 	</div>
 </div>
