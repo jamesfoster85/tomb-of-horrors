@@ -4,7 +4,7 @@
 		<%= link_to 'Add new...', new_encounter_path %>
 		<br />
 		<br />
-		<% @encounters.each do |encounter| %>
+		<% @encounters.reverse_each do |encounter| %>
 		<p>
 		<%= link_to encounter.id, encounter_path(encounter) %>
 		</p>

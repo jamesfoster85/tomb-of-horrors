@@ -1,4 +1,5 @@
 class EncountersController < ApplicationController
+	helper EncountersHelper
 	def index
 		@encounters = Encounter.all
 	end
@@ -18,6 +19,8 @@ class EncountersController < ApplicationController
 		if @encounter.blank?
 			render :text => "Not Found", :status => :not_found
 		end
+		@characters = @encounter.characters
+		@difficulty = @encounter.difficulty
 	end
 
 		def destroy
