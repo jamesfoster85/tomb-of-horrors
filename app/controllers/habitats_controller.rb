@@ -29,6 +29,6 @@ class HabitatsController < ApplicationController
 	private
 
 	def habitat_params
-		params.require(:habitat).permit(:name)
+		params.require(:habitat).permit(:name, {:monster_ids => []})
 	end
 end
