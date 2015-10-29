@@ -7,8 +7,14 @@
 				<%= character.name %>, <%= character.level %>
 			</h4>
 		<% end %>
-		<h6><%= @encounter.difficulty %></h6>
-		<h6><%= format_encounter(sample_encounter(@characters, @difficulty)).inspect %></h6>
+		<h6><%= Encounter::DIFFICULTIES.invert[@difficulty] %></h6>
+
+		<% @monsters.map do |monster| %>
+			<%= monster.name %>
+		<% end %>
+		<%= format_all(@characters, @difficulty).inspect %>
+
+
 		<%= link_to 'Destroy', encounter_path(@encounter), :method => :delete, :data => {:confirm => 'Are you sure you want to delete this?'}, :class => "button tiny alert" %>
 	</div>
 </div>

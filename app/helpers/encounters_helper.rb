@@ -79,11 +79,15 @@ module EncountersHelper
 		encounters
 	end
 
+	def format_all(characters, difficulty)
+		possible_encounters(characters, difficulty).map{|encounter| format_each(encounter)}
+	end
+
 	def sample_encounter(characters, difficulty)
 		possible_encounters(characters, difficulty).sample
 	end
 
-	def format_encounter(encounter)
-		formatted_encounter = encounter.uniq.map{|cr| [encounter.count(cr), cr]}
+	def format_each(encounter)
+		encounter.uniq.map{|cr| [encounter.count(cr), cr]}
 	end
 end

@@ -21,9 +21,11 @@ class EncountersController < ApplicationController
 		end
 		@characters = @encounter.characters
 		@difficulty = @encounter.difficulty
+		@habitat = @encounter.habitat_id
+		@monsters = Monster.joins(:habitats).where(habitats: {id: @habitat})
 	end
 
-		def destroy
+	def destroy
 		@encounter = Encounter.find(params[:id])
 		@encounter.destroy
 		redirect_to encounters_path
@@ -32,6 +34,6 @@ class EncountersController < ApplicationController
 	private
 
 	def encounter_params
-		params.require(:encounter).permit(:difficulty, {:character_ids => []})
+		params.require(:encounter).permit(:difficulty, :habitat_id, {:character_ids => []})
 	end	
 end
