@@ -9,7 +9,7 @@ class MonstersController < ApplicationController
 
 	def create
 		@monster = Monster.create(monster_params)
-		redirect_to root_path
+		redirect_to monsters_path
 	end
 
 	def show
