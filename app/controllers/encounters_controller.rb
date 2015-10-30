@@ -21,7 +21,7 @@ class EncountersController < ApplicationController
 		end
 		@characters = @encounter.characters
 		@difficulty = @encounter.difficulty
-		@habitat = @encounter.habitat_id
+		@habitat = @encounter.habitat
 		@monsters = Monster.joins(:habitats).where(habitats: {id: @habitat})
 	end
 

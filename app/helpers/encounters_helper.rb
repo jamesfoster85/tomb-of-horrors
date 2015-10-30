@@ -88,6 +88,14 @@ module EncountersHelper
 	end
 
 	def format_each(encounter)
-		encounter.uniq.map{|cr| [encounter.count(cr), cr]}
+		encounter.uniq.map{|cr| { encounter.count(cr) => cr } }
+	end
+
+	def valid_encounters
+
+	end
+
+	def monsters_by_xp(monsters)
+		monsters.group_by{|monster| monster.xp }
 	end
 end
