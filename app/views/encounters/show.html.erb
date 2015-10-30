@@ -11,7 +11,7 @@
 		<h5>Difficulty: <%= Encounter::DIFFICULTIES.invert[@difficulty] %></h5>
 
 
-		<%= format_all(@characters, @difficulty).each{|encounter| encounter.map{|creature| creature.merge!(creature){|k,ov|monsters_by_xp(@monsters)[ov]}}} %>
+		<%= format_all(valid_encounters(@characters, @difficulty, @monsters)).each{|encounter| encounter.map{|creature| creature.merge!(creature){|k,ov|monsters_by_xp(@monsters)[ov].sample.name}}}.sample %>
 
 
 		<%= link_to 'Destroy', encounter_path(@encounter), :method => :delete, :data => {:confirm => 'Are you sure you want to delete this?'}, :class => "button tiny alert" %>

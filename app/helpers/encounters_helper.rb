@@ -79,20 +79,17 @@ module EncountersHelper
 		encounters
 	end
 
-	def format_all(characters, difficulty)
-		possible_encounters(characters, difficulty).map{|encounter| format_each(encounter)}
-	end
-
-	def sample_encounter(characters, difficulty)
-		possible_encounters(characters, difficulty).sample
+	def format_all(encounters)
+		encounters.map{|encounter| format_each(encounter)}
 	end
 
 	def format_each(encounter)
 		encounter.uniq.map{|cr| { encounter.count(cr) => cr } }
 	end
 
-	def valid_encounters
-
+	def valid_encounters(characters, difficulty, monsters)
+		xps = monsters.map{|monster| monster.xp}.uniq
+		possible_encounters(characters, difficulty).select{|encounter| encounter.all?{|creature| xps.include?(creature)}}
 	end
 
 	def monsters_by_xp(monsters)
