@@ -1,0 +1,11 @@
+<div class="row">
+	<div class="small-10 small-offset-1 columns">
+		<h1>Add a new habitat...</h1>
+		<%= simple_form_for @habitat do |f| %>
+			<%= f.input :name %>
+			<%= f.collection_select(:monster_ids, @monsters, :id, :name, {:selected => @habitat.monsters.map(&:id)}, {:multiple => true}) %>
+			<br class="clr" />
+			<%= f.submit 'Create' %>
+		<% end %>
+	</div>
+</div>

@@ -4,10 +4,14 @@
 		<%= link_to 'Add new...', new_monster_path %>
 		<br />
 		<br />
-		<% @monsters.each do |monster| %>
-		<p>
-		<%= link_to monster.name, monster_path(monster) %>
-		</p>
-		<% end %>
 	</div>
+</div>
+<div class="row">
+	<% @monsters.each do |monster| %>
+		<div class="small-5 small-offset-1 columns">
+			<h6>
+				<%= link_to monster.name, monster_path(monster) %>
+			</h6>
+			</div>
+	<% end %>
 </div>

@@ -49,7 +49,7 @@ module EncountersHelper
 			[3200, 6500, 9700, 14500]
 		]
 
-		xp_by_cr = [0, 10, 25, 50, 100, 200, 450, 700, 1100, 1800, 2300, 2900, 3900, 5000, 5900, 7200, 8400, 10000, 11500, 13000, 15000, 18000, 20000, 22000, 25000, 33000, 41000, 50000, 62000, 75000, 90000, 105000, 120000, 135000, 155000]
+		xp_by_cr = Monster::XPS
 
 		party_size = characters.size
 		character_levels = characters.map{|character| character.level}
@@ -79,11 +79,20 @@ module EncountersHelper
 		encounters
 	end
 
-	def sample_encounter(characters, difficulty)
-		possible_encounters(characters, difficulty).sample
+	def format_all(encounters)
+		encounters.map{|encounter| format_each(encounter)}
 	end
 
-	def format_encounter(encounter)
-		formatted_encounter = encounter.uniq.map{|cr| [encounter.count(cr), cr]}
+	def format_each(encounter)
+		encounter.uniq.map{|cr| { encounter.count(cr) => cr } }
+	end
+
+	def valid_encounters(characters, difficulty, monsters)
+		xps = monsters.map{|monster| monster.xp}.uniq
+		possible_encounters(characters, difficulty).select{|encounter| encounter.all?{|creature| xps.include?(creature)}}
+	end
+
+	def monsters_by_xp(monsters)
+		monsters.group_by{|monster| monster.xp }
 	end
 end

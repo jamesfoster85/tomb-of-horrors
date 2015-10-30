@@ -3,6 +3,7 @@
 		<h1>Add a new encounter...</h1>
 		<%= simple_form_for @encounter do |f| %>
 			<%= f.input :difficulty, :collection => Encounter::DIFFICULTIES %>
+			<%= f.input :habitat_id, :collection => Habitat.all %>
 			<%= f.collection_select(:character_ids, Character.all, :id, :name, {:selected => @encounter.characters.map(&:id)}, {:multiple => true}) %>
 			<br class="clr" />
 			<%= f.submit 'Create' %>

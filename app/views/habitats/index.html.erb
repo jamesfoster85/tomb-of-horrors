@@ -1,0 +1,13 @@
+<div class="row">
+	<div class="small-10 small-offset-1 columns">
+		<h1>Habitats</h1>
+		<%= link_to 'Add new...', new_habitat_path %>
+		<br />
+		<br />
+		<% @habitats.each do |habitat| %>
+		<p>
+		<%= link_to habitat.name, habitat_path(habitat) %>
+		</p>
+		<% end %>
+	</div>
+</div>

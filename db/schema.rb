@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151028204304) do
+ActiveRecord::Schema.define(version: 20151029190838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,7 +35,24 @@ ActiveRecord::Schema.define(version: 20151028204304) do
     t.integer  "difficulty"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "habitat_id"
   end
+
+  add_index "encounters", ["habitat_id"], name: "index_encounters_on_habitat_id", using: :btree
+
+  create_table "habitats", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "habitats_monsters", id: false, force: true do |t|
+    t.integer "habitat_id"
+    t.integer "monster_id"
+  end
+
+  add_index "habitats_monsters", ["habitat_id"], name: "index_habitats_monsters_on_habitat_id", using: :btree
+  add_index "habitats_monsters", ["monster_id"], name: "index_habitats_monsters_on_monster_id", using: :btree
 
   create_table "monster_tags", force: true do |t|
     t.string   "tag"
