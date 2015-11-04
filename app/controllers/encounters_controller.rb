@@ -22,7 +22,9 @@ class EncountersController < ApplicationController
 		@characters = @encounter.characters
 		@difficulty = @encounter.difficulty
 		@habitat = @encounter.habitat
-		@monsters = Monster.joins(:habitats).where(habitats: {id: @habitat})
+		@monsters = @habitat.monsters
+#		@monsters = Monster.joins(:habitats).where(habitats: {id: @habitat})
+#		@random = format_all(valid_encounters(@characters, @difficulty, @monsters)).each{|encounter| encounter.map{|creature| creature.merge!(creature){|k,ov|monsters_by_xp(@monsters)[ov].sample.name}}}.sample
 	end
 
 	def destroy
