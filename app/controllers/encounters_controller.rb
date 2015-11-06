@@ -1,5 +1,4 @@
 class EncountersController < ApplicationController
-	helper EncountersHelper
 	def index
 		@encounters = Encounter.all
 	end
@@ -11,7 +10,8 @@ class EncountersController < ApplicationController
 
 	def create
 		@encounter = Encounter.create(encounter_params)
-		redirect_to encounters_path
+		@encounter.add_creatures
+		redirect_to encounter_path(@encounter)
 	end
 
 	def show
@@ -22,9 +22,6 @@ class EncountersController < ApplicationController
 		@characters = @encounter.characters
 		@difficulty = @encounter.difficulty
 		@habitat = @encounter.habitat
-		@monsters = @habitat.monsters
-#		@monsters = Monster.joins(:habitats).where(habitats: {id: @habitat})
-#		@random = format_all(valid_encounters(@characters, @difficulty, @monsters)).each{|encounter| encounter.map{|creature| creature.merge!(creature){|k,ov|monsters_by_xp(@monsters)[ov].sample.name}}}.sample
 	end
 
 	def destroy
