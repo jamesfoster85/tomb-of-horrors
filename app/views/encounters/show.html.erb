@@ -9,11 +9,9 @@
 		</h4>
 		<h5>Environment: <%= @habitat.name %></h5>
 		<h5>Difficulty: <%= Encounter::DIFFICULTIES.invert[@difficulty] %></h5>
-
-
-		<h6>
-			<%= format_all(valid_encounters(@characters, @difficulty, @monsters)).each{|encounter| encounter.map{|creature| creature.merge!(creature){|k,ov|monsters_by_xp(@monsters)[ov].sample.name}}}.sample %>
-		</h6>
+		<% @encounter.creatures.each do |creature| %>
+			<h6><%= creature.monster.name %></h6>
+		<% end %>
 
 
 		<%= link_to 'Destroy', encounter_path(@encounter), :method => :delete, :data => {:confirm => 'Are you sure you want to delete this?'}, :class => "button tiny alert" %>
