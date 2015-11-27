@@ -1,0 +1,13 @@
+<div class="row">
+	<div class="small-10 small-offset-1 columns">
+		<h1>Rooms</h1>
+		<%= link_to 'Add new...', new_room_path %>
+		<br />
+		<br />
+		<% @rooms.each do |room| %>
+		<p>
+		<%= link_to room.id, room_path(room) %>
+		</p>
+		<% end %>
+	</div>
+</div>

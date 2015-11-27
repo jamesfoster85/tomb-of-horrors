@@ -1,0 +1,13 @@
+<div class="row">
+	<div class="small-10 small-offset-1 columns">
+		<h1>Dungeons</h1>
+		<%= link_to 'Add new...', new_dungeon_path %>
+		<br />
+		<br />
+		<% @dungeons.each do |dungeon| %>
+		<p>
+		<%= link_to dungeon.id, dungeon_path(dungeon) %>
+		</p>
+		<% end %>
+	</div>
+</div>

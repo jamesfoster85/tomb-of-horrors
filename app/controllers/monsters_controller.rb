@@ -12,6 +12,16 @@ class MonstersController < ApplicationController
 		redirect_to monsters_path
 	end
 
+	def edit
+		@monster = Monster.find(params[:id])
+	end
+
+	def update
+		@monster = Monster.find(params[:id])
+		@monster.update_attributes(monster_params)
+		redirect_to monsters_path
+	end
+
 	def show
 		@monster = Monster.where(:id => params[:id]).first
 		if @monster.blank?

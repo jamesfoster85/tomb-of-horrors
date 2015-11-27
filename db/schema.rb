@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151104133929) do
+ActiveRecord::Schema.define(version: 20151126001241) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,11 @@ ActiveRecord::Schema.define(version: 20151104133929) do
   create_table "creatures", force: true do |t|
     t.integer  "monster_id"
     t.integer  "encounter_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "dungeons", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -82,6 +87,16 @@ ActiveRecord::Schema.define(version: 20151104133929) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "xp"
+  end
+
+  create_table "rooms", force: true do |t|
+    t.integer  "length"
+    t.integer  "width"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "dungeon_id"
+    t.string   "description"
+    t.string   "type"
   end
 
 end
