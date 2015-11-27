@@ -37,11 +37,11 @@ class Encounter < ActiveRecord::Base
 	]
 
 	def add_creatures
-		e = valid_encounters(self.characters, self.difficulty, self.habitat.monsters).sample
-		ms = e.uniq.map{|xp|monsters_by_xp(self.habitat.monsters)[xp].sample}
-		e = e.map{|xp|ms.find{|m|m.xp == xp}}
-		e.each do |m|
-			Creature.create(:monster_id => m.id, :encounter_id => self.id)
+		encounter = valid_encounters(self.characters, self.difficulty, self.habitat.monsters).sample
+		monsters = encounter.uniq.map{|xp|monsters_by_xp(self.habitat.monsters)[xp].sample}
+		encounter.map!{|xp|monsters.find{|monster|monster.xp == xp}}
+		encounter.each do |monster|
+			Creature.create(:monster_id => monster.id, :encounter_id => self.id)
 		end
 	end
 

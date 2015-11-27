@@ -34,6 +34,7 @@
 		<h4>Reactions</h4>
 		<hr />
 		<h6>[Reactions]</h6>
+		<%= link_to 'Edit', edit_monster_path(@monster), :class => "button tiny" %>
 		<%= link_to 'Destroy', monster_path(@monster), :method => :delete, :data => {:confirm => 'Are you sure you want to delete this?'}, :class => "button tiny alert" %>
 	</div>
 </div>
